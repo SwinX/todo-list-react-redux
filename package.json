@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
-
     "test": "istanbul test _mocha -- --recursive test/**/*.{js,jsx}",
-
     "build": "webpack --mode development",
     "build:prod": "NODE_ENV=production webpack --mode production"
   },
@@ -32,6 +30,7 @@
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "chai": "^4.1.2",
