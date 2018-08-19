@@ -51,6 +51,7 @@ module.exports = {
         'wrap-iife': ['error', 'any'],
         'yoda': 'error'
     },
+    "parser": "babel-eslint",
     'parserOptions': {
         sourceType: 'module',
         ecmaVersion: 9

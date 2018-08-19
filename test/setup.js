@@ -18,4 +18,5 @@ global.assert = chai.assert;
 global.enzyme = enzyme;
 
 chai.use(require('chai-as-promised'));
+chai.use(require('sinon-chai'));
 sinon.assert.expose(chai.assert, {prefix: ''});
