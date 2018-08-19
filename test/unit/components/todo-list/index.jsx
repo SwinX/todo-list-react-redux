@@ -1,6 +1,7 @@
 import React from 'react';
 import TodoList from '../../../../src/components/todo-list/index.jsx';
 import TodoListRow from '../../../../src/components/todo-list/row.jsx';
+import TodoListHeader from '../../../../src/components/todo-list/header.jsx';
 
 const {mount} = enzyme;
 
@@ -12,6 +13,7 @@ describe('TodoList', () => {
         const list = mount(
             <TodoList
                 todos={[todo, anotherTodo]}
+                onAddItem={() => {}}
                 onToggleItem={() => {}}
                 onEditItem={() => {}}
                 onRemoveItem={() => {}}
@@ -33,6 +35,7 @@ describe('TodoList', () => {
                 onToggleItem={onToggleItem}
                 onEditItem={() => {}}
                 onRemoveItem={() => {}}
+                onAddItem={() => {}}
             />
         );
         const rowKey = list.find(TodoListRow).key();
@@ -49,6 +52,7 @@ describe('TodoList', () => {
                 onToggleItem={onToggleItem}
                 onEditItem={() => {}}
                 onRemoveItem={() => {}}
+                onAddItem={() => {}}
             />
         );
         list.first(TodoListRow).prop('onToggleItem')({id: 'foo'});
@@ -65,6 +69,7 @@ describe('TodoList', () => {
                 onToggleItem={() => {}}
                 onEditItem={onEditItem}
                 onRemoveItem={() => {}}
+                onAddItem={() => {}}
             />
         );
         list.first(TodoListRow).prop('onEditItem')({id: 'foo'});
@@ -81,10 +86,28 @@ describe('TodoList', () => {
                 onToggleItem={() => {}}
                 onEditItem={() => {}}
                 onRemoveItem={onRemoveItem}
+                onAddItem={() => {}}
             />
         );
         list.first(TodoListRow).prop('onRemoveItem')({id: 'foo'});
 
         expect(onRemoveItem).to.be.calledWith({id: 'foo'});
+    });
+
+    it('should trigger add item handler when requested to add new item', () => {
+        const onAddItem = sinon.stub();
+
+        const list = mount(
+            <TodoList
+                todos={[{id: 'foo'}]}
+                onToggleItem={() => {}}
+                onEditItem={() => {}}
+                onRemoveItem={() => {}}
+                onAddItem={onAddItem}
+            />
+        );
+        list.find(TodoListHeader).prop('onAddItem')();
+
+        expect(onAddItem).to.be.calledOnce;
     });
 });

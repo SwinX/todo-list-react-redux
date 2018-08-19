@@ -15,7 +15,6 @@ class TodoListRow extends React.Component {
 
         return (
             <ListItem
-                key={todo.id}
                 role={undefined}
                 dense
                 button
