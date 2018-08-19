@@ -1,22 +1,22 @@
 import modalReducer from '../../../src/reducers/modal';
 import ActionTypes from '../../../src/actions/types';
-import {ModalTypes} from '../../../src/constants';
+import {ModalType} from '../../../src/constants';
 
 describe('modal reducer', () => {
     describe('`SHOW_MODAL` action', () => {
         it('should set type of modal as passed in action', () => {
             const action = {
                 type: ActionTypes.SHOW_MODAL,
-                modalType: ModalTypes.TODO_FORM
+                modalType: ModalType.TODO_FORM
             };
 
-            expect(modalReducer(undefined, action).type).to.equal(ModalTypes.TODO_FORM);
+            expect(modalReducer(undefined, action).type).to.equal(ModalType.TODO_FORM);
         });
 
         it('should set modal props as passed in action', () => {
             const action = {
                 type: ActionTypes.SHOW_MODAL,
-                modalType: ModalTypes.TODO_FORM,
+                modalType: ModalType.TODO_FORM,
                 modalProps: {foo: 'bar'}
             };
 
@@ -42,12 +42,12 @@ describe('modal reducer', () => {
         it('should return passed state', () => {
             const action = {type: ActionTypes.ADD_TODO};
             const prevState = {
-                type: ModalTypes.TODO_FORM,
+                type: ModalType.TODO_FORM,
                 props: {foo: 'bar'}
             };
 
             expect(modalReducer(prevState, action)).to.eql({
-                type: ModalTypes.TODO_FORM,
+                type: ModalType.TODO_FORM,
                 props: {foo: 'bar'}
             });
         });

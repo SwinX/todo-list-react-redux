@@ -1,8 +1,8 @@
-export const SortingTypes = {
+export const SortingType = {
     ASCENDING: 'ASCENDING',
     DESCENDING: 'DESCENDING'
 };
 
-export const ModalTypes = {
+export const ModalType = {
     TODO_FORM: 'TODO_FORM'
 };
