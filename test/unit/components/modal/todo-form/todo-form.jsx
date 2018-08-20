@@ -45,18 +45,6 @@ describe('TodoForm', () => {
 
             expect(component.state('isOpen')).to.be.false;
         });
-
-        it('should call onCancel handler', () => {
-            const onCancel = sinon.stub();
-            const component = renderTodoForm_({
-                handlers: {onCancel},
-                classes: {cancelButton: 'cancel-button'}
-            });
-
-            component.find('.cancel-button').simulate('click');
-
-            expect(onCancel).to.be.calledOnce;
-        });
     });
 
     describe('save button', () => {

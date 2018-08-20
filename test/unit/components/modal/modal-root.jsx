@@ -4,7 +4,7 @@ import {
     ModalRoot, mapStateToProps, mapDispatchToProps
 } from '../../../../src/components/modal/modal-root.jsx';
 
-import TodoForm from '../../../../src/components/modal/todo-form/todo-form.jsx';
+import TodoForm from '../../../../src/components/modal/todo-form';
 
 import {shallow} from 'enzyme';
 

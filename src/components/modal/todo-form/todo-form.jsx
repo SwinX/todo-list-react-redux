@@ -74,7 +74,6 @@ export class TodoForm extends React.Component {
 
     _onCancel = () => {
         this._hideDialog();
-        this.props.onCancel();
     }
 
     _onSave = () => {
@@ -85,7 +84,6 @@ export class TodoForm extends React.Component {
 
 TodoForm.propTypes = {
     onSave: PropTypes.func.isRequired,
-    onCancel: PropTypes.func.isRequired,
     onClose: PropTypes.func.isRequired,
     text: PropTypes.string,
     classes: PropTypes.object

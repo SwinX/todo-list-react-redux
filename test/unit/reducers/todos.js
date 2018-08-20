@@ -28,6 +28,32 @@ describe('todos reducer', () => {
         });
     });
 
+    describe('EDIT_TODO', () => {
+        it('should edit text of todo passed in action', () => {
+            const action = {
+                type: ActionTypes.EDIT_TODO,
+                id: '123',
+                text: 'bar'
+            };
+
+            const reduced = todosReducer([{id: '123', text: 'foo'}], action);
+
+            expect(reduced[0].text).to.be.equal('bar');
+        });
+
+        it('should not modify todos not matching todo passed in action', () => {
+            const action = {
+                type: ActionTypes.editTodo,
+                id: '123',
+                text: 'bar'
+            };
+
+            const reduced = todosReducer([{id: '456', text: 'foo'}], action);
+
+            expect(reduced[0].text).to.be.equal('foo');
+        });
+    });
+
     describe('TOGGLE_TODO', () => {
         it('should toggle completed status of todo passed in action', () => {
             const action = {

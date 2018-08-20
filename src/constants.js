@@ -6,3 +6,8 @@ export const SortingType = {
 export const ModalType = {
     TODO_FORM: 'TODO_FORM'
 };
+
+export const TodoFormAction = {
+    CREATE: 'CREATE',
+    EDIT: 'EDIT'
+};

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 
-import TodoForm from './todo-form/todo-form.jsx';
+import TodoForm from './todo-form';
 
 import {hideModal} from '../../actions';
 
