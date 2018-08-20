@@ -8,6 +8,11 @@ import TextField from '@material-ui/core/TextField';
 import {shallow} from 'enzyme';
 
 describe('TodoForm', () => {
+    it('should not throw if text is not passed', () => {
+        expect(() => renderTodoForm_({text: undefined}))
+            .to.not.throw();
+    });
+
     it('should open the dialog when mounted', () => {
         const component = renderTodoForm_();
 

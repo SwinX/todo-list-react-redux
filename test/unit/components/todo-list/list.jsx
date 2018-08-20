@@ -1,5 +1,5 @@
 import React from 'react';
-import TodoList from '../../../../src/components/todo-list/index.jsx';
+import TodoList from '../../../../src/components/todo-list/list.jsx';
 import TodoListRow from '../../../../src/components/todo-list/row.jsx';
 import TodoListHeader from '../../../../src/components/todo-list/header.jsx';
 

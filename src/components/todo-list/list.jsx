@@ -10,6 +10,7 @@ import {withStyles} from '@material-ui/core/styles';
 const styles = theme => ({
     root: {
         width: '100%',
+        maxWidth: '400px',
         backgroundColor: theme.palette.background.paper
     }
 });

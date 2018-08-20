@@ -22,7 +22,7 @@ export class TodoForm extends React.Component {
 
         this.state = {
             isOpen: true,
-            text: props.text
+            text: props.text || ''
         };
     }
 
