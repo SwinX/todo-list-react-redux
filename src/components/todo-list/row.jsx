@@ -45,9 +45,9 @@ TodoListRow.propTypes = {
         text: PropTypes.string,
         completed: PropTypes.boolean
     }).isRequired,
-    onEditItem: PropTypes.func.isRequired,
-    onRemoveItem: PropTypes.func.isRequired,
-    onToggleItem: PropTypes.func.isRequired
+    onEditItem: PropTypes.func,
+    onRemoveItem: PropTypes.func,
+    onToggleItem: PropTypes.func
 };
 
 export default TodoListRow;

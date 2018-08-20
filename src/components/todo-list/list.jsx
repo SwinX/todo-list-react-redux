@@ -58,11 +58,11 @@ TodoList.propTypes = {
         })
     ).isRequired,
     sorting: PropTypes.string.isRequired,
-    onAddItem: PropTypes.func.isRequired,
-    onEditItem: PropTypes.func.isRequired,
-    onRemoveItem: PropTypes.func.isRequired,
-    onToggleItem: PropTypes.func.isRequired,
-    onToggleSorting: PropTypes.func.isRequired
+    onAddItem: PropTypes.func,
+    onEditItem: PropTypes.func,
+    onRemoveItem: PropTypes.func,
+    onToggleItem: PropTypes.func,
+    onToggleSorting: PropTypes.func
 };
 
 export default withStyles(styles)(TodoList);

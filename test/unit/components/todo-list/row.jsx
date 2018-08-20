@@ -11,12 +11,7 @@ describe('TodoListRow', () => {
         const todo = {text: 'foo'};
 
         const row = shallow(
-            <TodoListRow
-                todo={todo}
-                onToggleItem={() => {}}
-                onEditItem={() => {}}
-                onRemoveItem={() => {}}
-            />
+            <TodoListRow todo={todo}/>
         );
 
         expect(row.find(ListItemText).prop('primary'))
@@ -27,12 +22,7 @@ describe('TodoListRow', () => {
         const onToggleItem = sinon.stub();
 
         const row = shallow(
-            <TodoListRow
-                todo={{id: 'foo'}}
-                onToggleItem={onToggleItem}
-                onEditItem={() => {}}
-                onRemoveItem={() => {}}
-            />
+            <TodoListRow todo={{id: 'foo'}} onToggleItem={onToggleItem}/>
         );
         row.simulate('click');
 
@@ -43,12 +33,7 @@ describe('TodoListRow', () => {
         const onEditItem = sinon.stub();
 
         const row = shallow(
-            <TodoListRow
-                todo={{id: 'foo'}}
-                onToggleItem={() => {}}
-                onEditItem={onEditItem}
-                onRemoveItem={() => {}}
-            />
+            <TodoListRow todo={{id: 'foo'}} onEditItem={onEditItem}/>
         );
         row.find(IconButton).first().simulate('click');
 
@@ -59,12 +44,7 @@ describe('TodoListRow', () => {
         const onRemoveItem = sinon.stub();
 
         const row = shallow(
-            <TodoListRow
-                todo={{id: 'foo'}}
-                onToggleItem={() => {}}
-                onEditItem={() => {}}
-                onRemoveItem={onRemoveItem}
-            />
+            <TodoListRow todo={{id: 'foo'}} onRemoveItem={onRemoveItem}/>
         );
         row.find(IconButton).last().simulate('click');
 

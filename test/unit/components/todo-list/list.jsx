@@ -16,10 +16,6 @@ describe('TodoList', () => {
             <TodoList
                 todos={[todo, anotherTodo]}
                 sorting={SortingType.ASCENDING}
-                onAddItem={() => {}}
-                onToggleItem={() => {}}
-                onEditItem={() => {}}
-                onRemoveItem={() => {}}
             />
         );
 
@@ -37,9 +33,6 @@ describe('TodoList', () => {
                 todos={[{id: 'foo'}]}
                 sorting={SortingType.ASCENDING}
                 onToggleItem={onToggleItem}
-                onEditItem={() => {}}
-                onRemoveItem={() => {}}
-                onAddItem={() => {}}
             />
         );
         const rowKey = list.find(TodoListRow).key();
@@ -55,9 +48,6 @@ describe('TodoList', () => {
                 todos={[{id: 'foo'}]}
                 sorting={SortingType.ASCENDING}
                 onToggleItem={onToggleItem}
-                onEditItem={() => {}}
-                onRemoveItem={() => {}}
-                onAddItem={() => {}}
             />
         );
         list.first(TodoListRow).prop('onToggleItem')({id: 'foo'});
@@ -72,10 +62,7 @@ describe('TodoList', () => {
             <TodoList
                 todos={[{id: 'foo'}]}
                 sorting={SortingType.ASCENDING}
-                onToggleItem={() => {}}
                 onEditItem={onEditItem}
-                onRemoveItem={() => {}}
-                onAddItem={() => {}}
             />
         );
         list.first(TodoListRow).prop('onEditItem')({id: 'foo'});
@@ -90,10 +77,7 @@ describe('TodoList', () => {
             <TodoList
                 todos={[{id: 'foo'}]}
                 sorting={SortingType.ASCENDING}
-                onToggleItem={() => {}}
-                onEditItem={() => {}}
                 onRemoveItem={onRemoveItem}
-                onAddItem={() => {}}
             />
         );
         list.first(TodoListRow).prop('onRemoveItem')({id: 'foo'});
@@ -108,9 +92,6 @@ describe('TodoList', () => {
             <TodoList
                 todos={[{id: 'foo'}]}
                 sorting={SortingType.ASCENDING}
-                onToggleItem={() => {}}
-                onEditItem={() => {}}
-                onRemoveItem={() => {}}
                 onAddItem={onAddItem}
             />
         );
