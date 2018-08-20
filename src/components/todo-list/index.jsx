@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {withStyles} from '@material-ui/core/styles';
+
 import List from '@material-ui/core/List';
 import Header from './header.jsx';
 import Row from './row.jsx';
+
+import {withStyles} from '@material-ui/core/styles';
 
 const styles = theme => ({
     root: {

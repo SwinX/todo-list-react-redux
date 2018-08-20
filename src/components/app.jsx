@@ -1,5 +1,6 @@
 import React from 'react';
 import TodoList from './todo-list/index.jsx';
+import {ModalRoot} from './modal';
 
 const todos = [
     {
@@ -22,6 +23,7 @@ const App = () => (
             onRemoveItem={item => console.log(`on remove item ${item.id}`)}
             onToggleItem={item => console.log(`on toggle item ${item.id}`)}
         />
+        <ModalRoot />
     </div>
 );
 

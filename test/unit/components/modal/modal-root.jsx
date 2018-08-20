@@ -4,7 +4,7 @@ import {
     ModalRoot, mapStateToProps, mapDispatchToProps
 } from '../../../../src/components/modal/modal-root.jsx';
 
-import Dialog from '@material-ui/core/dialog';
+import TodoForm from '../../../../src/components/modal/todo-form/todo-form.jsx';
 
 import {shallow} from 'enzyme';
 
@@ -13,12 +13,22 @@ import ActionType from '../../../../src/actions/types';
 
 describe('ModalRoot', () => {
     describe('render', () => {
+        it('should render TodoForm if passed dialog type is `TODO_FORM`', () => {
+            const onClose = sinon.stub();
+            const wrapper = shallow((
+                <ModalRoot type={ModalType.TODO_FORM} props={{}} onClose={onClose} />
+            ));
+
+            expect(wrapper.contains(<TodoForm onClose={onClose} {...{}} />))
+                .to.be.true;
+        });
+
         it('should render empty dialog if passed dialog type is not known to modal root', () => {
             const wrapper = shallow((
                 <ModalRoot type={'foo'} props={{}} onClose={() => {}} />
             ));
 
-            expect(wrapper.find(Dialog).children())
+            expect(wrapper.find(<div/>).children())
                 .to.have.length(0);
         });
     });

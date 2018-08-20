@@ -1,12 +1,14 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 
+import TodoForm from './todo-form/todo-form.jsx';
+
 import {hideModal} from '../../actions';
 
 import {ModalType} from '../../constants';
 
 const modalForType = {
-    [ModalType.TODO_FORM]: null
+    [ModalType.TODO_FORM]: TodoForm
 };
 
 export class ModalRoot extends React.Component {
