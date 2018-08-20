@@ -1,8 +1,8 @@
 import {
-    mapStateToProps, mapDispatchToProps
+    mapStateToProps, mapDispatchToProps, mergeProps
 } from '../../../../src/components/todo-list/list-container';
 
-import {TodoFormAction, ModalType} from '../../../../src/constants';
+import {TodoFormAction, ModalType, SortingType} from '../../../../src/constants';
 import ActionType from '../../../../src/actions/types';
 
 import configureMockStore from 'redux-mock-store';
@@ -22,7 +22,15 @@ describe('TodoListContainer', () => {
 
             const mapped = mapStateToProps(state);
 
-            expect(mapped).to.eql({todos: ['foo', 'bar']});
+            expect(mapped.todos).to.eql(['foo', 'bar']);
+        });
+
+        it('should pick sorting from the state', () => {
+            const state = {sorting: SortingType.ASCENDING};
+
+            const mapped = mapStateToProps(state);
+
+            expect(mapped.sorting).to.equal(SortingType.ASCENDING);
         });
     });
 
@@ -82,6 +90,42 @@ describe('TodoListContainer', () => {
                     type: ActionType.REMOVE_TODO,
                     id: '123'
                 });
+            });
+        });
+
+        describe('changeSorting', () => {
+            it('should set passed sorting type', () => {
+                const store = mockStore();
+                const changeSorting = mapDispatchToProps(store.dispatch).changeSorting;
+
+                changeSorting(SortingType.DESCENDING);
+
+                expect(store.getActions()).to.deep.include({
+                    type: ActionType.SET_TODO_SORTING,
+                    sorting: SortingType.DESCENDING
+                });
+            });
+        });
+    });
+
+    describe('merge props', () => {
+        describe('onToggleSorting', () => {
+            it('should tigger sorting change with descending sorting if previous sorting was ascending', () => {
+                const changeSorting = sinon.stub();
+                const onToggleSorting = mergeProps({sorting: SortingType.ASCENDING}, {changeSorting}).onToggleSorting;
+
+                onToggleSorting();
+
+                expect(changeSorting).to.be.calledWith(SortingType.DESCENDING);
+            });
+
+            it('should tigger sorting change with ascending sorting if previous sorting was descending', () => {
+                const changeSorting = sinon.stub();
+                const onToggleSorting = mergeProps({sorting: SortingType.DESCENDING}, {changeSorting}).onToggleSorting;
+
+                onToggleSorting();
+
+                expect(changeSorting).to.be.calledWith(SortingType.ASCENDING);
             });
         });
     });

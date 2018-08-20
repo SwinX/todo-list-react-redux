@@ -3,6 +3,8 @@ import TodoList from '../../../../src/components/todo-list/list.jsx';
 import TodoListRow from '../../../../src/components/todo-list/row.jsx';
 import TodoListHeader from '../../../../src/components/todo-list/header.jsx';
 
+import {SortingType} from '../../../../src/constants';
+
 const {mount} = enzyme;
 
 describe('TodoList', () => {
@@ -13,6 +15,7 @@ describe('TodoList', () => {
         const list = mount(
             <TodoList
                 todos={[todo, anotherTodo]}
+                sorting={SortingType.ASCENDING}
                 onAddItem={() => {}}
                 onToggleItem={() => {}}
                 onEditItem={() => {}}
@@ -32,6 +35,7 @@ describe('TodoList', () => {
         const list = mount(
             <TodoList
                 todos={[{id: 'foo'}]}
+                sorting={SortingType.ASCENDING}
                 onToggleItem={onToggleItem}
                 onEditItem={() => {}}
                 onRemoveItem={() => {}}
@@ -49,6 +53,7 @@ describe('TodoList', () => {
         const list = mount(
             <TodoList
                 todos={[{id: 'foo'}]}
+                sorting={SortingType.ASCENDING}
                 onToggleItem={onToggleItem}
                 onEditItem={() => {}}
                 onRemoveItem={() => {}}
@@ -66,6 +71,7 @@ describe('TodoList', () => {
         const list = mount(
             <TodoList
                 todos={[{id: 'foo'}]}
+                sorting={SortingType.ASCENDING}
                 onToggleItem={() => {}}
                 onEditItem={onEditItem}
                 onRemoveItem={() => {}}
@@ -83,6 +89,7 @@ describe('TodoList', () => {
         const list = mount(
             <TodoList
                 todos={[{id: 'foo'}]}
+                sorting={SortingType.ASCENDING}
                 onToggleItem={() => {}}
                 onEditItem={() => {}}
                 onRemoveItem={onRemoveItem}
@@ -100,6 +107,7 @@ describe('TodoList', () => {
         const list = mount(
             <TodoList
                 todos={[{id: 'foo'}]}
+                sorting={SortingType.ASCENDING}
                 onToggleItem={() => {}}
                 onEditItem={() => {}}
                 onRemoveItem={() => {}}

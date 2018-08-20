@@ -17,12 +17,16 @@ const styles = theme => ({
 
 class TodoList extends React.Component {
     render() {
-        const {classes, todos, onAddItem} = this.props;
+        const {classes, todos, sorting, onAddItem, onToggleSorting} = this.props;
 
         return (
             <div className={classes.root}>
                 <List>
-                    <Header onAddItem={onAddItem}/>
+                    <Header
+                        sorting={sorting}
+                        onToggleSorting={onToggleSorting}
+                        onAddItem={onAddItem}
+                    />
                     {todos.map(todo => this._renderTodo(todo))}
                 </List>
             </div>
@@ -53,10 +57,12 @@ TodoList.propTypes = {
             completed: PropTypes.boolean
         })
     ).isRequired,
+    sorting: PropTypes.string.isRequired,
     onAddItem: PropTypes.func.isRequired,
     onEditItem: PropTypes.func.isRequired,
     onRemoveItem: PropTypes.func.isRequired,
-    onToggleItem: PropTypes.func.isRequired
+    onToggleItem: PropTypes.func.isRequired,
+    onToggleSorting: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(TodoList);

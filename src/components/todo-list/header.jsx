@@ -7,17 +7,20 @@ import ListItemText from '@material-ui/core/ListItemText';
 import IconButton from '@material-ui/core/IconButton';
 import AddIcon from '@material-ui/icons/Add';
 
+import {SortingType} from '../../constants';
+
 class TodoListHeader extends React.Component {
     render() {
-        const {onAddItem} = this.props;
+        const {onAddItem, onToggleSorting} = this.props;
 
         return (
             <ListItem
                 role={undefined}
                 dense
                 button
+                onClick={onToggleSorting}
             >
-                <ListItemText primary={'Todo list'} />
+                <ListItemText primary={this._buildTitle()} />
                 <ListItemSecondaryAction>
                     <IconButton aria-label="Edit" onClick={onAddItem}>
                         <AddIcon />
@@ -26,10 +29,26 @@ class TodoListHeader extends React.Component {
             </ListItem>
         );
     }
+
+    _buildTitle() {
+        const {sorting} = this.props;
+
+        switch (sorting) {
+            case SortingType.ASCENDING: {
+                return 'Todo list ↑';
+            }
+
+            case SortingType.DESCENDING: {
+                return 'Todo list ↓';
+            }
+        }
+    }
 }
 
 TodoListHeader.propTypes = {
-    onAddItem: PropTypes.func.isRequired
+    sorting: PropTypes.string.isRequired,
+    onAddItem: PropTypes.func,
+    onToggleSorting: PropTypes.func
 };
 
 export default TodoListHeader;

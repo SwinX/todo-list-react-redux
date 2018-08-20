@@ -2,10 +2,13 @@ import {connect} from 'react-redux';
 
 import TodoList from './list.jsx';
 
-import {toggleTodo, removeTodo, showModal} from '../../actions';
-import {TodoFormAction, ModalType} from '../../constants';
+import {toggleTodo, removeTodo, showModal, setSorting} from '../../actions';
+import {TodoFormAction, ModalType, SortingType} from '../../constants';
 
-export const mapStateToProps = state => ({todos: state.todos});
+export const mapStateToProps = state => ({
+    todos: state.todos,
+    sorting: state.sorting
+});
 
 export const mapDispatchToProps = (dispatch) => ({
     onAddItem: () => dispatch(
@@ -24,10 +27,29 @@ export const mapDispatchToProps = (dispatch) => ({
 
     onToggleItem: todo => dispatch(toggleTodo(todo.id)),
 
-    onRemoveItem: todo => dispatch(removeTodo(todo.id))
+    onRemoveItem: todo => dispatch(removeTodo(todo.id)),
+
+    changeSorting: sorting => {
+        console.log('set sorting');
+        dispatch(setSorting(sorting));
+    }
+});
+
+export const mergeProps = (stateProps, dispatchProps) => ({
+    ...stateProps,
+    ...dispatchProps,
+    onToggleSorting: () => {
+        const {sorting} = stateProps;
+        const newSorting = sorting === SortingType.ASCENDING
+            ? SortingType.DESCENDING
+            : SortingType.ASCENDING;
+
+        return dispatchProps.changeSorting(newSorting);
+    }
 });
 
 export default connect(
     mapStateToProps,
-    mapDispatchToProps
+    mapDispatchToProps,
+    mergeProps
 )(TodoList);

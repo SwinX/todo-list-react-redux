@@ -16,8 +16,8 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-const store = createStore(persistedReducer)
-const persistor = persistStore(store)
+const store = createStore(persistedReducer);
+const persistor = persistStore(store);
 
 render(
     <Provider store={store}>
