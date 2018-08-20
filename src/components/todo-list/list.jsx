@@ -5,6 +5,7 @@ import List from '@material-ui/core/List';
 import Header from './header.jsx';
 import Row from './row.jsx';
 
+import {SortingType} from '../../constants';
 import {withStyles} from '@material-ui/core/styles';
 
 const styles = theme => ({
@@ -17,7 +18,8 @@ const styles = theme => ({
 
 class TodoList extends React.Component {
     render() {
-        const {classes, todos, sorting, onAddItem, onToggleSorting} = this.props;
+        const {classes, sorting, onAddItem, onToggleSorting} = this.props;
+        const todos = this._sortedTodos();
 
         return (
             <div className={classes.root}>
@@ -31,6 +33,24 @@ class TodoList extends React.Component {
                 </List>
             </div>
         );
+    }
+
+    _sortedTodos() {
+        const {todos, sorting} = this.props;
+
+        switch (sorting) {
+            case SortingType.ASCENDING: {
+                return todos.sort((first, second) => first.text > second.text ? 1 : -1);
+            }
+
+            case SortingType.DESCENDING: {
+                return todos.sort((first, second) => first.text < second.text ? 1 : -1);
+            }
+
+            default: {
+                return todos;
+            }
+        }
     }
 
     _renderTodo = (todo) => {

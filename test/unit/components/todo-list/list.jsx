@@ -25,6 +25,35 @@ describe('TodoList', () => {
         expect(rows.get(1).props.todo).to.be.eql(anotherTodo);
     });
 
+    it('should apply sorting by text to todos on render', () => {
+        const todo = {id: '1', text: 'a'};
+        const anotherTodo = {id: '2', text: 'b'};
+
+        const list = mount(
+            <TodoList
+                todos={[todo, anotherTodo]}
+                sorting={SortingType.DESCENDING}
+            />
+        );
+
+        const rows = list.find(TodoListRow);
+        expect(rows.get(0).props.todo).to.be.eql(anotherTodo);
+        expect(rows.get(1).props.todo).to.be.eql(todo);
+    });
+
+    it('should render todos without sorting if sorting is not passed', () => {
+        const todo = {id: '2', text: 'b'};
+        const anotherTodo = {id: '1', text: 'a'};
+
+        const list = mount(
+            <TodoList todos={[todo, anotherTodo]}/>
+        );
+
+        const rows = list.find(TodoListRow);
+        expect(rows.get(0).props.todo).to.be.eql(todo);
+        expect(rows.get(1).props.todo).to.be.eql(anotherTodo);
+    });
+
     it('should use todo id as a row key', () => {
         const onToggleItem = sinon.stub();
 
